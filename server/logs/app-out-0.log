@@ -1,0 +1,17 @@
+2020-12-13 18:31:54: [0mGET /api/article/allList [32m200 [0m263.784 ms - 30397[0m
+2020-12-13 18:31:55: UnauthorizedError: No authorization token was found
+    at middleware (F:\test\node\Blog - 副本\server\node_modules\express-jwt\lib\index.js:79:21)
+    at F:\test\node\Blog - 副本\server\node_modules\express-unless\index.js:47:5
+    at Layer.handle [as handle_request] (F:\test\node\Blog - 副本\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\test\node\Blog - 副本\server\node_modules\express\lib\router\index.js:317:13)
+    at F:\test\node\Blog - 副本\server\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\test\node\Blog - 副本\server\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\test\node\Blog - 副本\server\node_modules\express\lib\router\index.js:275:10)
+    at SendStream.error (F:\test\node\Blog - 副本\server\node_modules\serve-static\index.js:121:7)
+    at SendStream.emit (events.js:315:20)
+    at SendStream.error (F:\test\node\Blog - 副本\server\node_modules\send\index.js:270:17) {
+  code: 'credentials_required',
+  status: 401,
+  inner: { message: 'No authorization token was found' }
+}
+2020-12-13 18:31:55: [0mGET /favicon.ico [33m401 [0m47.985 ms - 37[0m
