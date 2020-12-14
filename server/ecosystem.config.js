@@ -31,7 +31,10 @@ module.exports = {
       repo : 'git@github.com:laobiyo/blogtest.git',
       path : '/usr/local/myProject',
       ssh_options:"StrictHostKeyChecking=no",
-      'post-deploy' : 'npm install && pm2 reload /source/server/ecosystem.config.js --env production'
+      'post-deploy' : 'npm install',
+      "env":{
+        "NODE_ENV":"production"
+      }
     }
   }
 };
