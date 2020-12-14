@@ -2,6 +2,7 @@ module.exports = {
   apps : [{
     name: 'app',
     script: './bin/www',
+
     // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
     instances: 1,
     autorestart: true,
@@ -29,7 +30,7 @@ module.exports = {
       ref  : 'origin/master',
       repo : 'git@github.com:laobiyo/blogtest.git',
       path : '/usr/local/myProject',
-      ssh_options:"StrictHostKeyChecking=no"
+      ssh_options:"StrictHostKeyChecking=no",
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
       "env":{
         "NODE_ENV":"production"
