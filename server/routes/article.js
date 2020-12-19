@@ -20,7 +20,7 @@ router.post('/add', async(req, res, next) => {
 // 获取全部博客列表接口
 router.get('/allList', async(req, res, next) => {
   try {
-    let sql = 'select id,title,content,DATE_FORMAT(create_time,"%Y-%m-%d %H:%i:%s") AS create_time from article'
+    let sql = "select id,title,content,view,img,description,DATE_FORMAT(create_time,'%Y-%m-%d %H:%i:%s') AS create_time from article"
     let result = await querySql(sql)
     res.send({code:0,msg:'获取成功',data:result})
   }catch(e){
@@ -52,6 +52,17 @@ router.get('/detail', async(req, res, next) => {
     let sql = 'select id,title,content,DATE_FORMAT(create_time,"%Y-%m-%d %H:%i:%s") AS create_time from article where id = ?'
     let result = await querySql(sql,[article_id])
     res.send({code:0,msg:'获取成功',data:result[0]})
+  }catch(e){
+    console.log(e)
+    next(e)
+  }
+});
+//获得热门博客详情
+router.get('/hotList', async(req, res, next) => {
+  try {
+    let sql = 'select id,title,content,view,DATE_FORMAT(create_time,"%Y-%m-%d %H:%i:%s") AS create_time from article order by view desc'
+    let result = await querySql(sql)
+    res.send({code:0,msg:'获取成功',data:result})
   }catch(e){
     console.log(e)
     next(e)
@@ -91,5 +102,16 @@ router.post('/delete', async(req, res, next) => {
     next(e)
   }
 });
-
+//增加浏览量
+router.get('/addview', async(req, res, next) => {
+  let article_id = req.query.article_id
+  try {
+    let sql = 'update article set view = view+1 where id = ?'
+    let result = await querySql(sql,article_id)
+    res.send({code:0,msg:'浏览量增加成功',data:null})
+  }catch(e){
+    console.log(e)
+    next(e)
+  }
+});
 module.exports = router;

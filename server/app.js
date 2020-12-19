@@ -27,7 +27,7 @@ app.use(expressJWT({
   secret: PRIVATE_KEY,
   algorithms:['HS256'],
 }).unless({
-  path: ['/api/user/register','/api/user/login','/api/user/upload','/api/article/allList','/api/article/detail','/api/comment/list']  //白名单,除了这里写的地址，其他的URL都需要验证
+  path: ['/api/user/register','/api/user/login','/api/user/upload','/api/article/allList',"/api/article/hotList",'/api/article/detail','/api/comment/list','/api/article/addview']  //白名单,除了这里写的地址，其他的URL都需要验证
 }));
 
 

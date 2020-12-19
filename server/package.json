@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "pm2":"pm2 start ecosystem.config.js --env production"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "axios": "^0.19.2",
